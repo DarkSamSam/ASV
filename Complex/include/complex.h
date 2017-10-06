@@ -1,11 +1,18 @@
+#ifndef COMPLEX_H
+#define COMPLEX_H
+
+#include <iostream>
+
 class Complex
 {
 public:
+	Complex();
+	Complex(double const& a, double const& b);
 	double re();
 	double im();
 	double rho();
 	double theta();
-	ostream& affiche(z);
+	std::ostream& affiche(std::ostream& sortie = std::cout) const;
 	Complex& operator+=(Complex const& z);
 	Complex& operator-=(Complex const& z);
 	Complex& operator*=(Complex const& z);
@@ -17,11 +24,12 @@ public:
 private:
 	double x;
 	double y;
-}
+};
 
 Complex operator+(Complex z1, Complex const& z2);
 Complex operator-(Complex z1, Complex const& z2);
 Complex operator*(Complex z1, Complex const& z2);
 Complex operator/(Complex z1, Complex const& z2);
-ostream& operator<<(ostream& sortie, Complex const& z);
+std::ostream& operator<<(std::ostream& sortie, Complex const& z);
 
+#endif
