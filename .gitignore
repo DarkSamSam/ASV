@@ -3,3 +3,6 @@ bin/
 
 #ignore object directories
 build/
+
+#ignore output directories
+output/
