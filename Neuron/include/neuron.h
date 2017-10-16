@@ -17,6 +17,7 @@ public:
 	double newpot(double const& Iext) const; //solves membrane equation
 	std::ostream& print(std::ostream& out = std::cout) const;
 	void receive(double const& J);
+	unsigned int idx(unsigned int const& t);
 private:
 	double incoming;
 	unsigned int tref; // refractory time
@@ -31,6 +32,7 @@ private:
 	double V;//V membrane potential
 	unsigned int spikes;
 	std::vector<unsigned int> times;//spike times, gonna be a vector of smth, maybe ints
+	std::vector<unsigned int> buffer;
 };
 
 std::ostream& operator<<(std::ostream& out, Neuron const& n);
