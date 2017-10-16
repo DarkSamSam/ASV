@@ -16,7 +16,9 @@ public:
 	bool update(double const& Iext); //return true if spike occurs
 	double newpot(double const& Iext) const; //solves membrane equation
 	std::ostream& print(std::ostream& out = std::cout) const;
+	void receive(double const& J);
 private:
+	double incoming;
 	unsigned int tref; // refractory time
 	double tau; //membrane time constant
 	double res; //membrane resistance
