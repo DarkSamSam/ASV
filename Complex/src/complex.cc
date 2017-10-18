@@ -5,12 +5,12 @@ using namespace std;
 Complex::Complex(): x(0.0), y(0.0) {}
 Complex::Complex(double const& a, double const& b): x(a), y(b) {}
 
-double Complex::rho()
+double Complex::rho() const
 {
 	return sqrt(x*x + y*y);
 }
 
-double Complex::theta()
+double Complex::theta() const
 {
 	double const module(rho());
 	double const precision(1e-15);
@@ -28,12 +28,12 @@ double Complex::theta()
 	}
 }
 
-double Complex::re()
+double Complex::re() const
 {
 	return x;
 }
 
-double Complex::im()
+double Complex::im() const
 {
 	return y;
 }
@@ -44,14 +44,14 @@ ostream& Complex::affiche(ostream& sortie) const
 	return sortie;
 }
 
-Complex& Complex::operator+=(Complex const& z)
+const Complex& Complex::operator+=(Complex const& z)
 {
 	x += z.x;
 	y += z.y;
 	return *this;
 }
 
-Complex& Complex::operator/=(Complex const& z)
+const Complex& Complex::operator/=(Complex const& z)
 {
 	double a = (x*z.x - y*z.x)/(z.x*z.x + z.y*z.y);
 	double b = (x*z.y + y*z.x)/(z.x*z.x + z.y*z.y);
@@ -60,14 +60,14 @@ Complex& Complex::operator/=(Complex const& z)
 	return *this;
 }
 
-Complex& Complex::operator-=(Complex const& z)
+const Complex& Complex::operator-=(Complex const& z)
 {
 	x -= z.x;
 	y -= z.y;
 	return *this;
 }
 
-Complex& Complex::operator*=(Complex const& z)
+const Complex& Complex::operator*=(Complex const& z)
 {
 	double a = x*z.x - y*z.y;
 	double b = x*z.y + y*z.x;
@@ -76,7 +76,7 @@ Complex& Complex::operator*=(Complex const& z)
 	return *this;
 }
 
-bool Complex::operator==(Complex const& z)
+bool Complex::operator==(Complex const& z) const
 {
 	if(x == z.x && y == z.y)
 	{
@@ -88,7 +88,7 @@ bool Complex::operator==(Complex const& z)
 	}
 }
 
-bool Complex::operator!=(Complex const& z)
+bool Complex::operator!=(Complex const& z) const
 {
 	return !(operator==(z));
 }
@@ -99,25 +99,25 @@ void Complex::operator=(Complex const& z)
 	y = z.y;
 }
 
-Complex operator+(Complex z1, Complex const& z2)
+const Complex operator+(Complex z1, Complex const& z2)
 {
 	z1 += z2;
 	return z1;
 }
 
-Complex operator-(Complex z1, Complex const& z2)
+const Complex operator-(Complex z1, Complex const& z2)
 {
 	z1 -= z2;
 	return z1;
 }
 
-Complex operator*(Complex z1, Complex const& z2)
+const Complex operator*(Complex z1, Complex const& z2)
 {
 	z1 *= z2;
 	return z1;
 }
 
-Complex operator/(Complex z1, Complex const& z2)
+const Complex operator/(Complex z1, Complex const& z2)
 {
 	z1 /= z2;
 	return z1;
