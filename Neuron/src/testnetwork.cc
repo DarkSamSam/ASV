@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-  Network net;
+  Network net(10);
   unsigned int tstop(1000); //=smth
   unsigned int simclock(0);
   double Iext(2.0);

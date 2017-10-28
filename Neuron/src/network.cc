@@ -1,5 +1,6 @@
 #include "../include/network.h"
 #include <vector>
+#include <random>
 using namespace std;
 
 Network::Network()
@@ -17,6 +18,16 @@ Network::Network(unsigned int const& number)
   {
     neurons.push_back(new Neuron);
     connections.push_back(vector<Neuron*>(1,nullptr));
+  }
+  random_device rd;
+  mt19937 gen(rd());
+  uniform_int_distribution<int> distrib(0,number-1);
+  for(unsigned int i=0; i<neurons.size(); ++i)
+  {
+    for(unsigned int j=0; j<number/10; ++j)
+    {
+      connections[i].push_back(neurons[distrib(gen)]);
+    }
   }
 }
 
